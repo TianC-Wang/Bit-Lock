@@ -23,3 +23,9 @@
 /// @param _Key 4 bit key.
 /// @return Reversed bits.
 int8_t wtcipher_rev8(int8_t _In, int8_t _Key);
+
+/// @brief Add a cover.
+/// @param _In The input.
+/// @param _Key 8 bit key.
+/// @return Covered bits.
+int8_t wtcipher_cover8(int8_t _In, int8_t _Key);

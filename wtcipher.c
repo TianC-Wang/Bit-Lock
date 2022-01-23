@@ -61,3 +61,8 @@ int8_t wtcipher_rev8(int8_t _In, int8_t _Key)
     }
     return ret;
 }
+
+int8_t wtcipher_cover8(int8_t _In, int8_t _Key)
+{
+    return _In ^ _Key;
+}
