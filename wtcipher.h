@@ -28,4 +28,4 @@
 /// @param _In The input.
 /// @param _Key 4 bit key.
 /// @return Reversed bits.
-int8_t wtcipher_rev8(int8_t _In, int8_t _Val);
+int8_t wtcipher_rev8(int8_t _In, int8_t _Key);
