@@ -31,4 +31,5 @@ int8_t wtcipher_rev8(int8_t _In, int8_t _Val)
         if (WTCIPHER_8_BIT(5, _In))
             WTCIPHER_8_SET(4, ret);
     }
+    return ret;
 }
