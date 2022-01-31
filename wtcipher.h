@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-#pragma region
+#pragma region /* --- Inner Definitions --- */
 #define __WTCIPHER_8_OPR1(x, op) (x op (int8_t)0x01)
 #define __WTCIPHER_8_OPR2(x, op) (x op (int8_t)0x02)
 #define __WTCIPHER_8_OPR3(x, op) (x op (int8_t)0x04)
@@ -125,7 +125,7 @@
 #define __WTCIPHER_64_OPR63(x, op) (x op (int64_t)0x4000000000000000)
 #define __WTCIPHER_64_OPR64(x, op) (x op (int64_t)0x8000000000000000)
 #pragma endregion
-#pragma region
+#pragma region /* --- Basic Definitions --- */
 #define WTCIPHER_8_LO(x) (x & (int8_t)0x0F)
 #define WTCIPHER_8_HI(x) ((x & (int8_t)0xF0) >> 4)
 #define WTCIPHER_8_BIT(b, x) __WTCIPHER_8_OPR##b(x, &)
@@ -154,12 +154,27 @@
 #define WTCIPHER_64_CHG(b, x) __WTCIPHER_64_OPR##b(x, ^=)
 #define WTCIPHER_64_CLR(b, x) __WTCIPHER_64_OPR##b(x, &=~)
 #pragma endregion
-#pragma region
+#pragma region /* --- Utility Functions --- */
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 4-bit key(, lower half byte).
 /// @return Reversed bits.
 int8_t wtcipher_rev8(int8_t _In, int8_t _Key);
+/// @brief Reverse specific bits.
+/// @param _In The input.
+/// @param _Key 8-bit key.
+/// @return Reversed bits.
+int16_t wtcipher_rev16(int16_t _In, int8_t _Key);
+/// @brief Reverse specific bits.
+/// @param _In The input.
+/// @param _Key 16-bit key.
+/// @return Reversed bits.
+int32_t wtcipher_rev32(int32_t _In, int16_t _Key);
+/// @brief Reverse specific bits.
+/// @param _In The input.
+/// @param _Key 32-bit key.
+/// @return Reversed bits.
+int64_t wtcipher_rev64(int64_t _In, int32_t _Key);
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 8-bit key.
@@ -191,7 +206,7 @@ int16_t wtcipher_8to16(int8_t* _In, int8_t _Key);
 /// @return The reordered 16 bits.
 int16_t wtcipher_16to8(int16_t _In, int8_t _Key);
 #pragma endregion
-#pragma region
+#pragma region /* --- Definition Cleans --- */
 #ifdef WTCIPHER_CLEAN
 #undef __WTCIPHER_8_OPR1
 #undef __WTCIPHER_8_OPR2
