@@ -160,19 +160,31 @@
 /// @param _Key 4-bit key(, lower half byte).
 /// @return Reversed bits.
 int8_t wtcipher_rev8(int8_t _In, int8_t _Key);
-
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 8-bit key.
 /// @return Covered bits.
 int8_t wtcipher_cover8(int8_t _In, int8_t _Key);
-
+/// @brief Add a cover.
+/// @param _In The input.
+/// @param _Key 16-bit key.
+/// @return Covered bits.
+int16_t wtcipher_cover16(int16_t _In, int16_t _Key);
+/// @brief Add a cover.
+/// @param _In The input.
+/// @param _Key 32-bit key.
+/// @return Covered bits.
+int32_t wtcipher_cover32(int32_t _In, int32_t _Key);
+/// @brief Add a cover.
+/// @param _In The input.
+/// @param _Key 64-bit key.
+/// @return Covered bits.
+int64_t wtcipher_cover64(int64_t _In, int64_t _Key);
 /// @brief Put 16 bits mixed together.
 /// @param _In The first input in a 2-element 8-bit array.
 /// @param _Key 8-bit key.
 /// @return The combined 16 bits.
 int16_t wtcipher_8to16(int8_t* _In, int8_t _Key);
-
 /// @brief Put 16 bits reordered.
 /// @param _In The input.
 /// @param _Key 8-bit key.

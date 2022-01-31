@@ -26,10 +26,18 @@ int8_t wtcipher_rev8(int8_t _In, int8_t _Key)
     return ret;
 }
 
-int8_t wtcipher_cover8(int8_t _In, int8_t _Key)
-{
-    return _In ^ _Key;
+#pragma region
+#define WTCIPHER_COMPRESS_A(b)\
+int##b##_t wtcipher_cover##b(int##b##_t _In, int##b##_t _Key)\
+{\
+    return _In ^ _Key;\
 }
+WTCIPHER_COMPRESS_A(8)
+WTCIPHER_COMPRESS_A(16)
+WTCIPHER_COMPRESS_A(32)
+WTCIPHER_COMPRESS_A(64)
+#undef WTCIPHER_COMPRESS_A
+#pragma endregion
 
 int16_t wtcipher_8to16(int8_t* _In, int8_t _Key)
 {
