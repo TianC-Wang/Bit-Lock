@@ -159,22 +159,22 @@
 /// @param _In The input.
 /// @param _Key 4-bit key(, lower half byte).
 /// @return Reversed bits.
-int8_t wtcipher_rev8(int8_t _In, int8_t _Key);
+int8_t wtcipher_reverse8(int8_t _In, int8_t _Key);
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 8-bit key.
 /// @return Reversed bits.
-int16_t wtcipher_rev16(int16_t _In, int8_t _Key);
+int16_t wtcipher_reverse16(int16_t _In, int8_t _Key);
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 16-bit key.
 /// @return Reversed bits.
-int32_t wtcipher_rev32(int32_t _In, int16_t _Key);
+int32_t wtcipher_reverse32(int32_t _In, int16_t _Key);
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 32-bit key.
 /// @return Reversed bits.
-int64_t wtcipher_rev64(int64_t _In, int32_t _Key);
+int64_t wtcipher_reverse64(int64_t _In, int32_t _Key);
 
 /// @brief Add a cover.
 /// @param _In The input.

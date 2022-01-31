@@ -1,6 +1,6 @@
 #include "wtcipher.h"
 
-#pragma region /* --- rev --- */
+#pragma region /* --- reverse --- */
 #define WTCIPHER_COMPRESS_A(a, b, x, y)\
     if (WTCIPHER_##a##_BIT(x, _Key))\
     {\
@@ -16,7 +16,7 @@
         if (WTCIPHER_##b##_BIT(y, _In))\
             WTCIPHER_##b##_SET(y, ret);\
     }
-int8_t wtcipher_rev8(int8_t _In, int8_t _Key)
+int8_t wtcipher_reverse8(int8_t _In, int8_t _Key)
 {
     int8_t ret = (int8_t)0;
     WTCIPHER_COMPRESS_A(8, 8, 1, 8)
@@ -25,7 +25,7 @@ int8_t wtcipher_rev8(int8_t _In, int8_t _Key)
     WTCIPHER_COMPRESS_A(8, 8, 4, 5)
     return ret;
 }
-int16_t wtcipher_rev16(int16_t _In, int8_t _Key)
+int16_t wtcipher_reverse16(int16_t _In, int8_t _Key)
 {
     int16_t ret = (int16_t)0;
     WTCIPHER_COMPRESS_A(8, 16, 1, 16)
@@ -38,7 +38,7 @@ int16_t wtcipher_rev16(int16_t _In, int8_t _Key)
     WTCIPHER_COMPRESS_A(8, 16, 8, 9)
     return ret;
 }
-int32_t wtcipher_rev32(int32_t _In, int16_t _Key)
+int32_t wtcipher_reverse32(int32_t _In, int16_t _Key)
 {
     int32_t ret = (int32_t)0;
     WTCIPHER_COMPRESS_A(16, 32, 1, 32)
@@ -59,7 +59,7 @@ int32_t wtcipher_rev32(int32_t _In, int16_t _Key)
     WTCIPHER_COMPRESS_A(16, 32, 16, 17)
     return ret;
 }
-int64_t wtcipher_rev64(int64_t _In, int32_t _Key)
+int64_t wtcipher_reverse64(int64_t _In, int32_t _Key)
 {
     int64_t ret = (int64_t)0;
     WTCIPHER_COMPRESS_A(32, 64, 1, 64)
