@@ -175,6 +175,7 @@ int32_t wtcipher_rev32(int32_t _In, int16_t _Key);
 /// @param _Key 32-bit key.
 /// @return Reversed bits.
 int64_t wtcipher_rev64(int64_t _In, int32_t _Key);
+
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 8-bit key.
@@ -195,6 +196,23 @@ int32_t wtcipher_cover32(int32_t _In, int32_t _Key);
 /// @param _Key 64-bit key.
 /// @return Covered bits.
 int64_t wtcipher_cover64(int64_t _In, int64_t _Key);
+
+/// @brief Exchange two 8-bit digits.
+/// @param _In1 The first input.
+/// @param _In2 The second input.
+void wtcipher_exchange8(int8_t* _In1, int8_t* _In2);
+/// @brief Exchange two 16-bit digits.
+/// @param _In1 The first input.
+/// @param _In2 The second input.
+void wtcipher_exchange16(int16_t* _In1, int16_t* _In2);
+/// @brief Exchange two 32-bit digits.
+/// @param _In1 The first input.
+/// @param _In2 The second input.
+void wtcipher_exchange32(int32_t* _In1, int32_t* _In2);
+/// @brief Exchange two 64-bit digits.
+/// @param _In1 The first input.
+/// @param _In2 The second input.
+void wtcipher_exchange64(int64_t* _In1, int64_t* _In2);
 #pragma endregion
 #pragma region /* --- Definition Cleans --- */
 #ifdef WTCIPHER_CLEAN

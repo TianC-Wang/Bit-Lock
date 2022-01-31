@@ -99,14 +99,28 @@ int64_t wtcipher_rev64(int64_t _In, int32_t _Key)
 #undef WTCIPHER_COMPRESS_A
 #pragma endregion
 #pragma region /* --- cover --- */
+#define WTCIPHER_COMPRESS_A_ALL \
+WTCIPHER_COMPRESS_A(8)\
+WTCIPHER_COMPRESS_A(16)\
+WTCIPHER_COMPRESS_A(32)\
+WTCIPHER_COMPRESS_A(64)
 #define WTCIPHER_COMPRESS_A(b)\
 int##b##_t wtcipher_cover##b(int##b##_t _In, int##b##_t _Key)\
 {\
     return _In ^ _Key;\
 }
-WTCIPHER_COMPRESS_A(8)
-WTCIPHER_COMPRESS_A(16)
-WTCIPHER_COMPRESS_A(32)
-WTCIPHER_COMPRESS_A(64)
+WTCIPHER_COMPRESS_A_ALL
 #undef WTCIPHER_COMPRESS_A
+#pragma endregion
+#pragma region /* --- exchange --- */
+#define WTCIPHER_COMPRESS_A(b)\
+void wtcipher_exchange##b(int##b##_t* _In1, int##b##_t* _In2)\
+{\
+    *_In1 ^= *_In2;\
+    *_In2 ^= *_In1;\
+    *_In1 ^= *_In2;\
+}
+WTCIPHER_COMPRESS_A_ALL
+#undef WTCIPHER_COMPRESS_A
+#undef WTCIPHER_COMPRESS_A_ALL
 #pragma endregion
