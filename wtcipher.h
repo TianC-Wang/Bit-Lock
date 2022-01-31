@@ -195,16 +195,6 @@ int32_t wtcipher_cover32(int32_t _In, int32_t _Key);
 /// @param _Key 64-bit key.
 /// @return Covered bits.
 int64_t wtcipher_cover64(int64_t _In, int64_t _Key);
-/// @brief Put 16 bits mixed together.
-/// @param _In The first input in a 2-element 8-bit array.
-/// @param _Key 8-bit key.
-/// @return The combined 16 bits.
-int16_t wtcipher_8to16(int8_t* _In, int8_t _Key);
-/// @brief Put 16 bits reordered.
-/// @param _In The input.
-/// @param _Key 8-bit key.
-/// @return The reordered 16 bits.
-int16_t wtcipher_16to8(int16_t _In, int8_t _Key);
 #pragma endregion
 #pragma region /* --- Definition Cleans --- */
 #ifdef WTCIPHER_CLEAN
