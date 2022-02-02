@@ -1,154 +1,154 @@
 #include <stdint.h>
 
 #pragma region /* --- Inner Definitions --- */
-#define __WTCIPHER_8_OPR1(x, op) (x op (int8_t)0x01)
-#define __WTCIPHER_8_OPR2(x, op) (x op (int8_t)0x02)
-#define __WTCIPHER_8_OPR3(x, op) (x op (int8_t)0x04)
-#define __WTCIPHER_8_OPR4(x, op) (x op (int8_t)0x08)
-#define __WTCIPHER_8_OPR5(x, op) (x op (int8_t)0x10)
-#define __WTCIPHER_8_OPR6(x, op) (x op (int8_t)0x20)
-#define __WTCIPHER_8_OPR7(x, op) (x op (int8_t)0x40)
-#define __WTCIPHER_8_OPR8(x, op) (x op (int8_t)0x80)
+#define __WTCIPHER_8_OPR1(x, op) (x op (uint8_t)0x01)
+#define __WTCIPHER_8_OPR2(x, op) (x op (uint8_t)0x02)
+#define __WTCIPHER_8_OPR3(x, op) (x op (uint8_t)0x04)
+#define __WTCIPHER_8_OPR4(x, op) (x op (uint8_t)0x08)
+#define __WTCIPHER_8_OPR5(x, op) (x op (uint8_t)0x10)
+#define __WTCIPHER_8_OPR6(x, op) (x op (uint8_t)0x20)
+#define __WTCIPHER_8_OPR7(x, op) (x op (uint8_t)0x40)
+#define __WTCIPHER_8_OPR8(x, op) (x op (uint8_t)0x80)
 
-#define __WTCIPHER_16_OPR1(x, op) (x op (int16_t)0x0001)
-#define __WTCIPHER_16_OPR2(x, op) (x op (int16_t)0x0002)
-#define __WTCIPHER_16_OPR3(x, op) (x op (int16_t)0x0004)
-#define __WTCIPHER_16_OPR4(x, op) (x op (int16_t)0x0008)
-#define __WTCIPHER_16_OPR5(x, op) (x op (int16_t)0x0010)
-#define __WTCIPHER_16_OPR6(x, op) (x op (int16_t)0x0020)
-#define __WTCIPHER_16_OPR7(x, op) (x op (int16_t)0x0040)
-#define __WTCIPHER_16_OPR8(x, op) (x op (int16_t)0x0080)
-#define __WTCIPHER_16_OPR9(x, op) (x op (int16_t)0x0100)
-#define __WTCIPHER_16_OPR10(x, op) (x op (int16_t)0x0200)
-#define __WTCIPHER_16_OPR11(x, op) (x op (int16_t)0x0400)
-#define __WTCIPHER_16_OPR12(x, op) (x op (int16_t)0x0800)
-#define __WTCIPHER_16_OPR13(x, op) (x op (int16_t)0x1000)
-#define __WTCIPHER_16_OPR14(x, op) (x op (int16_t)0x2000)
-#define __WTCIPHER_16_OPR15(x, op) (x op (int16_t)0x4000)
-#define __WTCIPHER_16_OPR16(x, op) (x op (int16_t)0x8000)
+#define __WTCIPHER_16_OPR1(x, op) (x op (uint16_t)0x0001)
+#define __WTCIPHER_16_OPR2(x, op) (x op (uint16_t)0x0002)
+#define __WTCIPHER_16_OPR3(x, op) (x op (uint16_t)0x0004)
+#define __WTCIPHER_16_OPR4(x, op) (x op (uint16_t)0x0008)
+#define __WTCIPHER_16_OPR5(x, op) (x op (uint16_t)0x0010)
+#define __WTCIPHER_16_OPR6(x, op) (x op (uint16_t)0x0020)
+#define __WTCIPHER_16_OPR7(x, op) (x op (uint16_t)0x0040)
+#define __WTCIPHER_16_OPR8(x, op) (x op (uint16_t)0x0080)
+#define __WTCIPHER_16_OPR9(x, op) (x op (uint16_t)0x0100)
+#define __WTCIPHER_16_OPR10(x, op) (x op (uint16_t)0x0200)
+#define __WTCIPHER_16_OPR11(x, op) (x op (uint16_t)0x0400)
+#define __WTCIPHER_16_OPR12(x, op) (x op (uint16_t)0x0800)
+#define __WTCIPHER_16_OPR13(x, op) (x op (uint16_t)0x1000)
+#define __WTCIPHER_16_OPR14(x, op) (x op (uint16_t)0x2000)
+#define __WTCIPHER_16_OPR15(x, op) (x op (uint16_t)0x4000)
+#define __WTCIPHER_16_OPR16(x, op) (x op (uint16_t)0x8000)
 
-#define __WTCIPHER_32_OPR1(x, op) (x op (int32_t)0x00000001)
-#define __WTCIPHER_32_OPR2(x, op) (x op (int32_t)0x00000002)
-#define __WTCIPHER_32_OPR3(x, op) (x op (int32_t)0x00000004)
-#define __WTCIPHER_32_OPR4(x, op) (x op (int32_t)0x00000008)
-#define __WTCIPHER_32_OPR5(x, op) (x op (int32_t)0x00000010)
-#define __WTCIPHER_32_OPR6(x, op) (x op (int32_t)0x00000020)
-#define __WTCIPHER_32_OPR7(x, op) (x op (int32_t)0x00000040)
-#define __WTCIPHER_32_OPR8(x, op) (x op (int32_t)0x00000080)
-#define __WTCIPHER_32_OPR9(x, op) (x op (int32_t)0x00000100)
-#define __WTCIPHER_32_OPR10(x, op) (x op (int32_t)0x00000200)
-#define __WTCIPHER_32_OPR11(x, op) (x op (int32_t)0x00000400)
-#define __WTCIPHER_32_OPR12(x, op) (x op (int32_t)0x00000800)
-#define __WTCIPHER_32_OPR13(x, op) (x op (int32_t)0x00001000)
-#define __WTCIPHER_32_OPR14(x, op) (x op (int32_t)0x00002000)
-#define __WTCIPHER_32_OPR15(x, op) (x op (int32_t)0x00004000)
-#define __WTCIPHER_32_OPR16(x, op) (x op (int32_t)0x00008000)
-#define __WTCIPHER_32_OPR17(x, op) (x op (int32_t)0x00010000)
-#define __WTCIPHER_32_OPR18(x, op) (x op (int32_t)0x00020000)
-#define __WTCIPHER_32_OPR19(x, op) (x op (int32_t)0x00040000)
-#define __WTCIPHER_32_OPR20(x, op) (x op (int32_t)0x00080000)
-#define __WTCIPHER_32_OPR21(x, op) (x op (int32_t)0x00100000)
-#define __WTCIPHER_32_OPR22(x, op) (x op (int32_t)0x00200000)
-#define __WTCIPHER_32_OPR23(x, op) (x op (int32_t)0x00400000)
-#define __WTCIPHER_32_OPR24(x, op) (x op (int32_t)0x00800000)
-#define __WTCIPHER_32_OPR25(x, op) (x op (int32_t)0x01000000)
-#define __WTCIPHER_32_OPR26(x, op) (x op (int32_t)0x02000000)
-#define __WTCIPHER_32_OPR27(x, op) (x op (int32_t)0x04000000)
-#define __WTCIPHER_32_OPR28(x, op) (x op (int32_t)0x08000000)
-#define __WTCIPHER_32_OPR29(x, op) (x op (int32_t)0x10000000)
-#define __WTCIPHER_32_OPR30(x, op) (x op (int32_t)0x20000000)
-#define __WTCIPHER_32_OPR31(x, op) (x op (int32_t)0x40000000)
-#define __WTCIPHER_32_OPR32(x, op) (x op (int32_t)0x80000000)
+#define __WTCIPHER_32_OPR1(x, op) (x op (uint32_t)0x00000001)
+#define __WTCIPHER_32_OPR2(x, op) (x op (uint32_t)0x00000002)
+#define __WTCIPHER_32_OPR3(x, op) (x op (uint32_t)0x00000004)
+#define __WTCIPHER_32_OPR4(x, op) (x op (uint32_t)0x00000008)
+#define __WTCIPHER_32_OPR5(x, op) (x op (uint32_t)0x00000010)
+#define __WTCIPHER_32_OPR6(x, op) (x op (uint32_t)0x00000020)
+#define __WTCIPHER_32_OPR7(x, op) (x op (uint32_t)0x00000040)
+#define __WTCIPHER_32_OPR8(x, op) (x op (uint32_t)0x00000080)
+#define __WTCIPHER_32_OPR9(x, op) (x op (uint32_t)0x00000100)
+#define __WTCIPHER_32_OPR10(x, op) (x op (uint32_t)0x00000200)
+#define __WTCIPHER_32_OPR11(x, op) (x op (uint32_t)0x00000400)
+#define __WTCIPHER_32_OPR12(x, op) (x op (uint32_t)0x00000800)
+#define __WTCIPHER_32_OPR13(x, op) (x op (uint32_t)0x00001000)
+#define __WTCIPHER_32_OPR14(x, op) (x op (uint32_t)0x00002000)
+#define __WTCIPHER_32_OPR15(x, op) (x op (uint32_t)0x00004000)
+#define __WTCIPHER_32_OPR16(x, op) (x op (uint32_t)0x00008000)
+#define __WTCIPHER_32_OPR17(x, op) (x op (uint32_t)0x00010000)
+#define __WTCIPHER_32_OPR18(x, op) (x op (uint32_t)0x00020000)
+#define __WTCIPHER_32_OPR19(x, op) (x op (uint32_t)0x00040000)
+#define __WTCIPHER_32_OPR20(x, op) (x op (uint32_t)0x00080000)
+#define __WTCIPHER_32_OPR21(x, op) (x op (uint32_t)0x00100000)
+#define __WTCIPHER_32_OPR22(x, op) (x op (uint32_t)0x00200000)
+#define __WTCIPHER_32_OPR23(x, op) (x op (uint32_t)0x00400000)
+#define __WTCIPHER_32_OPR24(x, op) (x op (uint32_t)0x00800000)
+#define __WTCIPHER_32_OPR25(x, op) (x op (uint32_t)0x01000000)
+#define __WTCIPHER_32_OPR26(x, op) (x op (uint32_t)0x02000000)
+#define __WTCIPHER_32_OPR27(x, op) (x op (uint32_t)0x04000000)
+#define __WTCIPHER_32_OPR28(x, op) (x op (uint32_t)0x08000000)
+#define __WTCIPHER_32_OPR29(x, op) (x op (uint32_t)0x10000000)
+#define __WTCIPHER_32_OPR30(x, op) (x op (uint32_t)0x20000000)
+#define __WTCIPHER_32_OPR31(x, op) (x op (uint32_t)0x40000000)
+#define __WTCIPHER_32_OPR32(x, op) (x op (uint32_t)0x80000000)
 
-#define __WTCIPHER_64_OPR1(x, op) (x op (int64_t)0x0000000000000001)
-#define __WTCIPHER_64_OPR2(x, op) (x op (int64_t)0x0000000000000002)
-#define __WTCIPHER_64_OPR3(x, op) (x op (int64_t)0x0000000000000004)
-#define __WTCIPHER_64_OPR4(x, op) (x op (int64_t)0x0000000000000008)
-#define __WTCIPHER_64_OPR5(x, op) (x op (int64_t)0x0000000000000010)
-#define __WTCIPHER_64_OPR6(x, op) (x op (int64_t)0x0000000000000020)
-#define __WTCIPHER_64_OPR7(x, op) (x op (int64_t)0x0000000000000040)
-#define __WTCIPHER_64_OPR8(x, op) (x op (int64_t)0x0000000000000080)
-#define __WTCIPHER_64_OPR9(x, op) (x op (int64_t)0x0000000000000100)
-#define __WTCIPHER_64_OPR10(x, op) (x op (int64_t)0x0000000000000200)
-#define __WTCIPHER_64_OPR11(x, op) (x op (int64_t)0x0000000000000400)
-#define __WTCIPHER_64_OPR12(x, op) (x op (int64_t)0x0000000000000800)
-#define __WTCIPHER_64_OPR13(x, op) (x op (int64_t)0x0000000000001000)
-#define __WTCIPHER_64_OPR14(x, op) (x op (int64_t)0x0000000000002000)
-#define __WTCIPHER_64_OPR15(x, op) (x op (int64_t)0x0000000000004000)
-#define __WTCIPHER_64_OPR16(x, op) (x op (int64_t)0x0000000000008000)
-#define __WTCIPHER_64_OPR17(x, op) (x op (int64_t)0x0000000000010000)
-#define __WTCIPHER_64_OPR18(x, op) (x op (int64_t)0x0000000000020000)
-#define __WTCIPHER_64_OPR19(x, op) (x op (int64_t)0x0000000000040000)
-#define __WTCIPHER_64_OPR20(x, op) (x op (int64_t)0x0000000000080000)
-#define __WTCIPHER_64_OPR21(x, op) (x op (int64_t)0x0000000000100000)
-#define __WTCIPHER_64_OPR22(x, op) (x op (int64_t)0x0000000000200000)
-#define __WTCIPHER_64_OPR23(x, op) (x op (int64_t)0x0000000000400000)
-#define __WTCIPHER_64_OPR24(x, op) (x op (int64_t)0x0000000000800000)
-#define __WTCIPHER_64_OPR25(x, op) (x op (int64_t)0x0000000001000000)
-#define __WTCIPHER_64_OPR26(x, op) (x op (int64_t)0x0000000002000000)
-#define __WTCIPHER_64_OPR27(x, op) (x op (int64_t)0x0000000004000000)
-#define __WTCIPHER_64_OPR28(x, op) (x op (int64_t)0x0000000008000000)
-#define __WTCIPHER_64_OPR29(x, op) (x op (int64_t)0x0000000010000000)
-#define __WTCIPHER_64_OPR30(x, op) (x op (int64_t)0x0000000020000000)
-#define __WTCIPHER_64_OPR31(x, op) (x op (int64_t)0x0000000040000000)
-#define __WTCIPHER_64_OPR32(x, op) (x op (int64_t)0x0000000080000000)
-#define __WTCIPHER_64_OPR33(x, op) (x op (int64_t)0x0000000100000000)
-#define __WTCIPHER_64_OPR34(x, op) (x op (int64_t)0x0000000200000000)
-#define __WTCIPHER_64_OPR35(x, op) (x op (int64_t)0x0000000400000000)
-#define __WTCIPHER_64_OPR36(x, op) (x op (int64_t)0x0000000800000000)
-#define __WTCIPHER_64_OPR37(x, op) (x op (int64_t)0x0000001000000000)
-#define __WTCIPHER_64_OPR38(x, op) (x op (int64_t)0x0000002000000000)
-#define __WTCIPHER_64_OPR39(x, op) (x op (int64_t)0x0000004000000000)
-#define __WTCIPHER_64_OPR40(x, op) (x op (int64_t)0x0000008000000000)
-#define __WTCIPHER_64_OPR41(x, op) (x op (int64_t)0x0000010000000000)
-#define __WTCIPHER_64_OPR42(x, op) (x op (int64_t)0x0000020000000000)
-#define __WTCIPHER_64_OPR43(x, op) (x op (int64_t)0x0000040000000000)
-#define __WTCIPHER_64_OPR44(x, op) (x op (int64_t)0x0000080000000000)
-#define __WTCIPHER_64_OPR45(x, op) (x op (int64_t)0x0000100000000000)
-#define __WTCIPHER_64_OPR46(x, op) (x op (int64_t)0x0000200000000000)
-#define __WTCIPHER_64_OPR47(x, op) (x op (int64_t)0x0000400000000000)
-#define __WTCIPHER_64_OPR48(x, op) (x op (int64_t)0x0000800000000000)
-#define __WTCIPHER_64_OPR49(x, op) (x op (int64_t)0x0001000000000000)
-#define __WTCIPHER_64_OPR50(x, op) (x op (int64_t)0x0002000000000000)
-#define __WTCIPHER_64_OPR51(x, op) (x op (int64_t)0x0004000000000000)
-#define __WTCIPHER_64_OPR52(x, op) (x op (int64_t)0x0008000000000000)
-#define __WTCIPHER_64_OPR53(x, op) (x op (int64_t)0x0010000000000000)
-#define __WTCIPHER_64_OPR54(x, op) (x op (int64_t)0x0020000000000000)
-#define __WTCIPHER_64_OPR55(x, op) (x op (int64_t)0x0040000000000000)
-#define __WTCIPHER_64_OPR56(x, op) (x op (int64_t)0x0080000000000000)
-#define __WTCIPHER_64_OPR57(x, op) (x op (int64_t)0x0100000000000000)
-#define __WTCIPHER_64_OPR58(x, op) (x op (int64_t)0x0200000000000000)
-#define __WTCIPHER_64_OPR59(x, op) (x op (int64_t)0x0400000000000000)
-#define __WTCIPHER_64_OPR60(x, op) (x op (int64_t)0x0800000000000000)
-#define __WTCIPHER_64_OPR61(x, op) (x op (int64_t)0x1000000000000000)
-#define __WTCIPHER_64_OPR62(x, op) (x op (int64_t)0x2000000000000000)
-#define __WTCIPHER_64_OPR63(x, op) (x op (int64_t)0x4000000000000000)
-#define __WTCIPHER_64_OPR64(x, op) (x op (int64_t)0x8000000000000000)
+#define __WTCIPHER_64_OPR1(x, op) (x op (uint64_t)0x0000000000000001)
+#define __WTCIPHER_64_OPR2(x, op) (x op (uint64_t)0x0000000000000002)
+#define __WTCIPHER_64_OPR3(x, op) (x op (uint64_t)0x0000000000000004)
+#define __WTCIPHER_64_OPR4(x, op) (x op (uint64_t)0x0000000000000008)
+#define __WTCIPHER_64_OPR5(x, op) (x op (uint64_t)0x0000000000000010)
+#define __WTCIPHER_64_OPR6(x, op) (x op (uint64_t)0x0000000000000020)
+#define __WTCIPHER_64_OPR7(x, op) (x op (uint64_t)0x0000000000000040)
+#define __WTCIPHER_64_OPR8(x, op) (x op (uint64_t)0x0000000000000080)
+#define __WTCIPHER_64_OPR9(x, op) (x op (uint64_t)0x0000000000000100)
+#define __WTCIPHER_64_OPR10(x, op) (x op (uint64_t)0x0000000000000200)
+#define __WTCIPHER_64_OPR11(x, op) (x op (uint64_t)0x0000000000000400)
+#define __WTCIPHER_64_OPR12(x, op) (x op (uint64_t)0x0000000000000800)
+#define __WTCIPHER_64_OPR13(x, op) (x op (uint64_t)0x0000000000001000)
+#define __WTCIPHER_64_OPR14(x, op) (x op (uint64_t)0x0000000000002000)
+#define __WTCIPHER_64_OPR15(x, op) (x op (uint64_t)0x0000000000004000)
+#define __WTCIPHER_64_OPR16(x, op) (x op (uint64_t)0x0000000000008000)
+#define __WTCIPHER_64_OPR17(x, op) (x op (uint64_t)0x0000000000010000)
+#define __WTCIPHER_64_OPR18(x, op) (x op (uint64_t)0x0000000000020000)
+#define __WTCIPHER_64_OPR19(x, op) (x op (uint64_t)0x0000000000040000)
+#define __WTCIPHER_64_OPR20(x, op) (x op (uint64_t)0x0000000000080000)
+#define __WTCIPHER_64_OPR21(x, op) (x op (uint64_t)0x0000000000100000)
+#define __WTCIPHER_64_OPR22(x, op) (x op (uint64_t)0x0000000000200000)
+#define __WTCIPHER_64_OPR23(x, op) (x op (uint64_t)0x0000000000400000)
+#define __WTCIPHER_64_OPR24(x, op) (x op (uint64_t)0x0000000000800000)
+#define __WTCIPHER_64_OPR25(x, op) (x op (uint64_t)0x0000000001000000)
+#define __WTCIPHER_64_OPR26(x, op) (x op (uint64_t)0x0000000002000000)
+#define __WTCIPHER_64_OPR27(x, op) (x op (uint64_t)0x0000000004000000)
+#define __WTCIPHER_64_OPR28(x, op) (x op (uint64_t)0x0000000008000000)
+#define __WTCIPHER_64_OPR29(x, op) (x op (uint64_t)0x0000000010000000)
+#define __WTCIPHER_64_OPR30(x, op) (x op (uint64_t)0x0000000020000000)
+#define __WTCIPHER_64_OPR31(x, op) (x op (uint64_t)0x0000000040000000)
+#define __WTCIPHER_64_OPR32(x, op) (x op (uint64_t)0x0000000080000000)
+#define __WTCIPHER_64_OPR33(x, op) (x op (uint64_t)0x0000000100000000)
+#define __WTCIPHER_64_OPR34(x, op) (x op (uint64_t)0x0000000200000000)
+#define __WTCIPHER_64_OPR35(x, op) (x op (uint64_t)0x0000000400000000)
+#define __WTCIPHER_64_OPR36(x, op) (x op (uint64_t)0x0000000800000000)
+#define __WTCIPHER_64_OPR37(x, op) (x op (uint64_t)0x0000001000000000)
+#define __WTCIPHER_64_OPR38(x, op) (x op (uint64_t)0x0000002000000000)
+#define __WTCIPHER_64_OPR39(x, op) (x op (uint64_t)0x0000004000000000)
+#define __WTCIPHER_64_OPR40(x, op) (x op (uint64_t)0x0000008000000000)
+#define __WTCIPHER_64_OPR41(x, op) (x op (uint64_t)0x0000010000000000)
+#define __WTCIPHER_64_OPR42(x, op) (x op (uint64_t)0x0000020000000000)
+#define __WTCIPHER_64_OPR43(x, op) (x op (uint64_t)0x0000040000000000)
+#define __WTCIPHER_64_OPR44(x, op) (x op (uint64_t)0x0000080000000000)
+#define __WTCIPHER_64_OPR45(x, op) (x op (uint64_t)0x0000100000000000)
+#define __WTCIPHER_64_OPR46(x, op) (x op (uint64_t)0x0000200000000000)
+#define __WTCIPHER_64_OPR47(x, op) (x op (uint64_t)0x0000400000000000)
+#define __WTCIPHER_64_OPR48(x, op) (x op (uint64_t)0x0000800000000000)
+#define __WTCIPHER_64_OPR49(x, op) (x op (uint64_t)0x0001000000000000)
+#define __WTCIPHER_64_OPR50(x, op) (x op (uint64_t)0x0002000000000000)
+#define __WTCIPHER_64_OPR51(x, op) (x op (uint64_t)0x0004000000000000)
+#define __WTCIPHER_64_OPR52(x, op) (x op (uint64_t)0x0008000000000000)
+#define __WTCIPHER_64_OPR53(x, op) (x op (uint64_t)0x0010000000000000)
+#define __WTCIPHER_64_OPR54(x, op) (x op (uint64_t)0x0020000000000000)
+#define __WTCIPHER_64_OPR55(x, op) (x op (uint64_t)0x0040000000000000)
+#define __WTCIPHER_64_OPR56(x, op) (x op (uint64_t)0x0080000000000000)
+#define __WTCIPHER_64_OPR57(x, op) (x op (uint64_t)0x0100000000000000)
+#define __WTCIPHER_64_OPR58(x, op) (x op (uint64_t)0x0200000000000000)
+#define __WTCIPHER_64_OPR59(x, op) (x op (uint64_t)0x0400000000000000)
+#define __WTCIPHER_64_OPR60(x, op) (x op (uint64_t)0x0800000000000000)
+#define __WTCIPHER_64_OPR61(x, op) (x op (uint64_t)0x1000000000000000)
+#define __WTCIPHER_64_OPR62(x, op) (x op (uint64_t)0x2000000000000000)
+#define __WTCIPHER_64_OPR63(x, op) (x op (uint64_t)0x4000000000000000)
+#define __WTCIPHER_64_OPR64(x, op) (x op (uint64_t)0x8000000000000000)
 #pragma endregion
 #pragma region /* --- Basic Definitions --- */
-#define WTCIPHER_8_LO(x) (x & (int8_t)0x0F)
-#define WTCIPHER_8_HI(x) ((x & (int8_t)0xF0) >> 4)
+#define WTCIPHER_8_LO(x) (x & (uint8_t)0x0F)
+#define WTCIPHER_8_HI(x) ((x & (uint8_t)0xF0) >> 4)
 #define WTCIPHER_8_BIT(b, x) __WTCIPHER_8_OPR##b(x, &)
 #define WTCIPHER_8_SET(b, x) __WTCIPHER_8_OPR##b(x, |=)
 #define WTCIPHER_8_CHG(b, x) __WTCIPHER_8_OPR##b(x, ^=)
 #define WTCIPHER_8_CLR(b, x) __WTCIPHER_8_OPR##b(x, &=~)
 
-#define WTCIPHER_16_LO(x) (x & (int16_t)0x00FF)
-#define WTCIPHER_16_HI(x) ((x & (int16_t)0xFF00) >> 8)
+#define WTCIPHER_16_LO(x) (x & (uint16_t)0x00FF)
+#define WTCIPHER_16_HI(x) ((x & (uint16_t)0xFF00) >> 8)
 #define WTCIPHER_16_BIT(b, x) __WTCIPHER_16_OPR##b(x, &)
 #define WTCIPHER_16_SET(b, x) __WTCIPHER_16_OPR##b(x, |=)
 #define WTCIPHER_16_CHG(b, x) __WTCIPHER_16_OPR##b(x, ^=)
 #define WTCIPHER_16_CLR(b, x) __WTCIPHER_16_OPR##b(x, &=~)
 
-#define WTCIPHER_32_LO(x) (x & (int32_t)0x0000FFFF)
-#define WTCIPHER_32_HI(x) ((x & (int32_t)0xFFFF0000) >> 16)
+#define WTCIPHER_32_LO(x) (x & (uint32_t)0x0000FFFF)
+#define WTCIPHER_32_HI(x) ((x & (uint32_t)0xFFFF0000) >> 16)
 #define WTCIPHER_32_BIT(b, x) __WTCIPHER_32_OPR##b(x, &)
 #define WTCIPHER_32_SET(b, x) __WTCIPHER_32_OPR##b(x, |=)
 #define WTCIPHER_32_CHG(b, x) __WTCIPHER_32_OPR##b(x, ^=)
 #define WTCIPHER_32_CLR(b, x) __WTCIPHER_32_OPR##b(x, &=~)
 
-#define WTCIPHER_64_LO(x) (x & (int64_t)0x00000000FFFFFFFF)
-#define WTCIPHER_64_HI(x) ((x & (int64_t)0xFFFFFFFF00000000) >> 32)
+#define WTCIPHER_64_LO(x) (x & (uint64_t)0x00000000FFFFFFFF)
+#define WTCIPHER_64_HI(x) ((x & (uint64_t)0xFFFFFFFF00000000) >> 32)
 #define WTCIPHER_64_BIT(b, x) __WTCIPHER_64_OPR##b(x, &)
 #define WTCIPHER_64_SET(b, x) __WTCIPHER_64_OPR##b(x, |=)
 #define WTCIPHER_64_CHG(b, x) __WTCIPHER_64_OPR##b(x, ^=)
@@ -159,60 +159,77 @@
 /// @param _In The input.
 /// @param _Key 4-bit key(, lower half byte).
 /// @return Reversed bits.
-int8_t wtcipher_reverse8(int8_t _In, int8_t _Key);
+uint8_t wtcipher_reverse8(uint8_t _In, uint8_t _Key);
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 8-bit key.
 /// @return Reversed bits.
-int16_t wtcipher_reverse16(int16_t _In, int8_t _Key);
+uint16_t wtcipher_reverse16(uint16_t _In, uint8_t _Key);
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 16-bit key.
 /// @return Reversed bits.
-int32_t wtcipher_reverse32(int32_t _In, int16_t _Key);
+uint32_t wtcipher_reverse32(uint32_t _In, uint16_t _Key);
 /// @brief Reverse specific bits.
 /// @param _In The input.
 /// @param _Key 32-bit key.
 /// @return Reversed bits.
-int64_t wtcipher_reverse64(int64_t _In, int32_t _Key);
+uint64_t wtcipher_reverse64(uint64_t _In, uint32_t _Key);
 
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 8-bit key.
 /// @return Covered bits.
-int8_t wtcipher_cover8(int8_t _In, int8_t _Key);
+uint8_t wtcipher_cover8(uint8_t _In, uint8_t _Key);
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 16-bit key.
 /// @return Covered bits.
-int16_t wtcipher_cover16(int16_t _In, int16_t _Key);
+uint16_t wtcipher_cover16(uint16_t _In, uint16_t _Key);
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 32-bit key.
 /// @return Covered bits.
-int32_t wtcipher_cover32(int32_t _In, int32_t _Key);
+uint32_t wtcipher_cover32(uint32_t _In, uint32_t _Key);
 /// @brief Add a cover.
 /// @param _In The input.
 /// @param _Key 64-bit key.
 /// @return Covered bits.
-int64_t wtcipher_cover64(int64_t _In, int64_t _Key);
+uint64_t wtcipher_cover64(uint64_t _In, uint64_t _Key);
 
 /// @brief Exchange two 8-bit digits.
 /// @param _In1 The first input.
 /// @param _In2 The second input.
-void wtcipher_exchange8(int8_t* _In1, int8_t* _In2);
+void wtcipher_exchange8(uint8_t* _In1, uint8_t* _In2);
 /// @brief Exchange two 16-bit digits.
 /// @param _In1 The first input.
 /// @param _In2 The second input.
-void wtcipher_exchange16(int16_t* _In1, int16_t* _In2);
+void wtcipher_exchange16(uint16_t* _In1, uint16_t* _In2);
 /// @brief Exchange two 32-bit digits.
 /// @param _In1 The first input.
 /// @param _In2 The second input.
-void wtcipher_exchange32(int32_t* _In1, int32_t* _In2);
+void wtcipher_exchange32(uint32_t* _In1, uint32_t* _In2);
 /// @brief Exchange two 64-bit digits.
 /// @param _In1 The first input.
 /// @param _In2 The second input.
-void wtcipher_exchange64(int64_t* _In1, int64_t* _In2);
+void wtcipher_exchange64(uint64_t* _In1, uint64_t* _In2);
+
+/// @brief Change between big endian and little endian.
+/// @param _In The 8-bit input.
+/// @return The alternated endian bytes.
+uint8_t wtcipher_endian8(uint8_t _In);
+/// @brief Change between big endian and little endian.
+/// @param _In The 16-bit input.
+/// @return The alternated endian bytes.
+uint16_t wtcipher_endian16(uint16_t _In);
+/// @brief Change between big endian and little endian.
+/// @param _In The 32-bit input.
+/// @return The alternated endian bytes.
+uint32_t wtcipher_endian32(uint32_t _In);
+/// @brief Change between big endian and little endian.
+/// @param _In The 64-bit input.
+/// @return The alternated endian bytes.
+uint64_t wtcipher_endian64(uint64_t _In);
 #pragma endregion
 #pragma region /* --- Definition Cleans --- */
 #ifdef WTCIPHER_CLEAN

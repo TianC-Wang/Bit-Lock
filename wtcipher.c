@@ -16,18 +16,18 @@
         if (WTCIPHER_##b##_BIT(y, _In))\
             WTCIPHER_##b##_SET(y, ret);\
     }
-int8_t wtcipher_reverse8(int8_t _In, int8_t _Key)
+uint8_t wtcipher_reverse8(uint8_t _In, uint8_t _Key)
 {
-    int8_t ret = (int8_t)0;
+    uint8_t ret = (uint8_t)0;
     WTCIPHER_COMPRESS_A(8, 8, 1, 8)
     WTCIPHER_COMPRESS_A(8, 8, 2, 7)
     WTCIPHER_COMPRESS_A(8, 8, 3, 6)
     WTCIPHER_COMPRESS_A(8, 8, 4, 5)
     return ret;
 }
-int16_t wtcipher_reverse16(int16_t _In, int8_t _Key)
+uint16_t wtcipher_reverse16(uint16_t _In, uint8_t _Key)
 {
-    int16_t ret = (int16_t)0;
+    uint16_t ret = (uint16_t)0;
     WTCIPHER_COMPRESS_A(8, 16, 1, 16)
     WTCIPHER_COMPRESS_A(8, 16, 2, 15)
     WTCIPHER_COMPRESS_A(8, 16, 3, 14)
@@ -38,9 +38,9 @@ int16_t wtcipher_reverse16(int16_t _In, int8_t _Key)
     WTCIPHER_COMPRESS_A(8, 16, 8, 9)
     return ret;
 }
-int32_t wtcipher_reverse32(int32_t _In, int16_t _Key)
+uint32_t wtcipher_reverse32(uint32_t _In, uint16_t _Key)
 {
-    int32_t ret = (int32_t)0;
+    uint32_t ret = (uint32_t)0;
     WTCIPHER_COMPRESS_A(16, 32, 1, 32)
     WTCIPHER_COMPRESS_A(16, 32, 2, 31)
     WTCIPHER_COMPRESS_A(16, 32, 3, 30)
@@ -59,9 +59,9 @@ int32_t wtcipher_reverse32(int32_t _In, int16_t _Key)
     WTCIPHER_COMPRESS_A(16, 32, 16, 17)
     return ret;
 }
-int64_t wtcipher_reverse64(int64_t _In, int32_t _Key)
+uint64_t wtcipher_reverse64(uint64_t _In, uint32_t _Key)
 {
-    int64_t ret = (int64_t)0;
+    uint64_t ret = (uint64_t)0;
     WTCIPHER_COMPRESS_A(32, 64, 1, 64)
     WTCIPHER_COMPRESS_A(32, 64, 2, 63)
     WTCIPHER_COMPRESS_A(32, 64, 3, 62)
@@ -105,7 +105,7 @@ WTCIPHER_COMPRESS_A(16)\
 WTCIPHER_COMPRESS_A(32)\
 WTCIPHER_COMPRESS_A(64)
 #define WTCIPHER_COMPRESS_A(b)\
-int##b##_t wtcipher_cover##b(int##b##_t _In, int##b##_t _Key)\
+uint##b##_t wtcipher_cover##b(uint##b##_t _In, uint##b##_t _Key)\
 {\
     return _In ^ _Key;\
 }
@@ -114,7 +114,7 @@ WTCIPHER_COMPRESS_A_ALL
 #pragma endregion
 #pragma region /* --- exchange --- */
 #define WTCIPHER_COMPRESS_A(b)\
-void wtcipher_exchange##b(int##b##_t* _In1, int##b##_t* _In2)\
+void wtcipher_exchange##b(uint##b##_t* _In1, uint##b##_t* _In2)\
 {\
     *_In1 ^= *_In2;\
     *_In2 ^= *_In1;\
@@ -123,4 +123,22 @@ void wtcipher_exchange##b(int##b##_t* _In1, int##b##_t* _In2)\
 WTCIPHER_COMPRESS_A_ALL
 #undef WTCIPHER_COMPRESS_A
 #undef WTCIPHER_COMPRESS_A_ALL
+#pragma endregion
+#pragma region /* --- endian --- */
+uint8_t wtcipher_endian8(uint8_t _In)
+{
+    return _In;
+}
+uint16_t wtcipher_endian16(uint16_t _In)
+{
+    return (_In & (uint16_t)0x00FF) << 8 | (_In & (uint16_t)0xFF00) >> 8;
+}
+uint32_t wtcipher_endian32(uint32_t _In)
+{
+    return (_In & (uint32_t)0x000000FF) << 24 | (_In & (uint32_t)0x0000FF00) << 8 | (_In & (uint32_t)0x00FF0000) >> 8 | (_In & (uint32_t)0xFF000000) >> 24;
+}
+uint64_t wtcipher_endian64(uint64_t _In)
+{
+    return (uint64_t)((_In & (uint64_t)0x00000000000000FF) << 56 | (_In & (uint64_t)0x000000000000FF00) << 40 | (_In & (uint64_t)0x0000000000FF0000) << 24 | (_In & (uint64_t)0x00000000FF000000) << 8 | (_In & (uint64_t)0x000000FF00000000) >> 8 | (_In & (uint64_t)0x0000FF0000000000) >> 24 | (_In & (uint64_t)0x00FF000000000000) >> 40 | (_In & (uint64_t)0xFF00000000000000) >> 56);
+}
 #pragma endregion
